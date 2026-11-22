@@ -9,8 +9,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: boilerplate-next:prod
-    container_name: boilerplate-next-prod
+    image: use-url-query-demo-web:prod
+    container_name: use-url-query-demo-web-prod
     ports:
       - "3000:3000"
     profiles:

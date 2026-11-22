@@ -53,6 +53,10 @@ ENV NODE_ENV=production
 # Desligada neste boilerplate. Motivo: DECISIONS.md
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# NEXT_PUBLIC_* entra no bundle no build (Coolify/CI via build-arg). Motivo: DECISIONS.md
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Build Next.js application
 # If you want to speed up Docker rebuilds, you can cache the build artifacts
 # by adding: --mount=type=cache,target=/app/.next/cache
