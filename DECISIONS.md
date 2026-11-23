@@ -103,6 +103,10 @@ A lista é a do guia, sem edição. Efeitos aceitos:
 
 Referência: https://docs.docker.com/reference/dockerfile/#dockerignore-file
 
+## Dependência `@fabriciogferreira/use-url-query`
+
+O demo instala o hook pelo npm (`^0.1.4`). CI e `Dockerfile` usam o registry; o host-card pode montar o clone da lib sobre `node_modules/@fabriciogferreira/use-url-query` para desenvolver contra o `main` local sem republicar.
+
 ## Cache de build e fetch cache
 
 O `Dockerfile` standalone do guia não usa `--mount=type=cache,target=/app/.next/cache` no `npm run build`. O comentário do próprio guia diz que esse mount acelera o rebuild e impede `.next/cache/fetch-cache` de ir para a imagem final. O `COPY` de `.next/cache` para o runner também fica comentado, como no guia. O Dockerfile de export do guia usa o mount; não seguimos esse arquivo porque a escolha foi standalone.
