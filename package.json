@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
-    "@fabriciogferreira/use-url-query": "^0.1.4",
+    "@fabriciogferreira/use-url-query": "^0.1.5",
     "@t3-oss/env-nextjs": "^0.13.11",
     "@tanstack/react-query": "^5.104.5",
     "@tanstack/react-table": "^9.3.1",

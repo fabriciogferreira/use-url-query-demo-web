@@ -105,7 +105,11 @@ Referência: https://docs.docker.com/reference/dockerfile/#dockerignore-file
 
 ## Dependência `@fabriciogferreira/use-url-query`
 
-O demo instala o hook pelo npm (`^0.1.4`). CI e `Dockerfile` usam o registry; o host-card pode montar o clone da lib sobre `node_modules/@fabriciogferreira/use-url-query` para desenvolver contra o `main` local sem republicar.
+O demo instala o hook pelo npm (`^0.1.5`). CI e `Dockerfile` usam o registry; o host-card pode montar o clone da lib sobre `node_modules/@fabriciogferreira/use-url-query` para desenvolver contra o `main` local sem republicar.
+
+## `npm run typecheck`
+
+`next build` roda o TypeScript no deploy. O script `typecheck` (`next typegen && tsc --noEmit`) gera `LayoutProps` / tipos de rota e espelha esse gate no host-card / pre-deploy sem o build completo. `vendor/` fica fora do `tsconfig` para um leftover local não entrar no `tsc`.
 
 ## Cache de build e fetch cache
 
