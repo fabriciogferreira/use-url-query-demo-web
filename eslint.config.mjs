@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local lib bind-mount / leftover mount point — not app source.
+    "vendor/**",
   ]),
 ]);
 

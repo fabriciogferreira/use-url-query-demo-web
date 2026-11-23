@@ -1,17 +1,19 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
 import { MonitorIcon, MoonIcon, SunIcon } from "@/components/icons"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
+const emptySubscribe = () => () => {}
+
 export function ModeToggle() {
 	const { theme, setTheme } = useTheme()
-	const [isMounted, setIsMounted] = useState(false)
-
-	useEffect(() => {
-		setIsMounted(true)
-	}, [])
+	const isMounted = useSyncExternalStore(
+		emptySubscribe,
+		() => true,
+		() => false,
+	)
 
 	if (!isMounted) {
 		return (

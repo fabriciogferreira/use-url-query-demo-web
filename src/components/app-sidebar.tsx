@@ -63,6 +63,15 @@ const data = {
 			],
 		},
 		{
+			title: "Fields",
+			items: [
+				{
+					title: "addField / removeField",
+					hash: "add-field-remove-field",
+				},
+			],
+		},
+		{
 			title: "Future features",
 			items: [
 				{

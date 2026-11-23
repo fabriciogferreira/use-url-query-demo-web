@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# Host-card may bind-mount the lib here (legacy) or leave an empty mount point.
+/vendor/
 /.pnp
 .pnp.*
 .yarn/*

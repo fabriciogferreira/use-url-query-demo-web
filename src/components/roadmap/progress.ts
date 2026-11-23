@@ -123,7 +123,7 @@ export const roadmapSections: RoadmapSectionProgress[] = [
 			{
 				id: "basic",
 				title: "Basic field selection",
-				done: false,
+				done: true,
 			},
 			{
 				id: "included-relations",
@@ -133,7 +133,7 @@ export const roadmapSections: RoadmapSectionProgress[] = [
 			{
 				id: "allowed-safety",
 				title: "Allowed fields & safety",
-				done: false,
+				done: true,
 			},
 			{
 				id: "param-delimiters",

@@ -12,13 +12,15 @@ import { SectionProgress } from "./section-progress"
 const SPATIE_FIELDS_URL =
 	"https://spatie.be/docs/laravel-query-builder/v6/features/selecting-fields"
 
-const FIELDS_EXAMPLES = `// Planned URL shapes (Spatie)
-// GET /users?fields[users]=id,name
-// GET /posts?include=author&fields[authors]=id,name
+const CURRENT_SURFACE = `addField("users", ["id", "name"])
+// → fields[users]=id,name
 
-addField("users", ["id", "name"])
 removeField("users", "name")
-clearFields("users")
+removeField("users")`
+
+const FIELDS_EXAMPLES = `// Planned
+addField("authors", ["id", "name"]) // with include=author
+fieldParamAs: "select"
 `
 
 export function FieldsRoadmap() {
@@ -44,43 +46,35 @@ export function FieldsRoadmap() {
 					docs. The{" "}
 					<code className="font-mono text-xs">fields[table]=…</code>{" "}
 					query param narrows the SQL{" "}
-					<code className="font-mono text-xs">SELECT</code>. Not part
-					of the shipped demo surface yet — today only{" "}
-					<code className="font-mono text-xs">addFilter</code> /{" "}
-					<code className="font-mono text-xs">removeFilter</code> are
-					documented as available.
+					<code className="font-mono text-xs">SELECT</code>.
 				</p>
+			</div>
+
+			<div className="flex flex-col gap-3">
+				<h3 className="text-sm font-medium">Available today</h3>
+				<p className="text-muted-foreground text-sm leading-relaxed">
+					<code className="font-mono text-xs">addField</code> /{" "}
+					<code className="font-mono text-xs">removeField</code> for
+					the users table (
+					<code className="font-mono text-xs">id</code>,{" "}
+					<code className="font-mono text-xs">name</code>), matching
+					demo-api{" "}
+					<code className="font-mono text-xs">allowedFields</code>.
+				</p>
+				<CodeBlock>
+					<CodeBlockHeader>
+						<CodeBlockTitle>current</CodeBlockTitle>
+						<CodeBlockActions>
+							<CodeBlockCopyButton value={CURRENT_SURFACE} />
+						</CodeBlockActions>
+					</CodeBlockHeader>
+					<CodeBlockContent wrap>{CURRENT_SURFACE}</CodeBlockContent>
+				</CodeBlock>
 			</div>
 
 			<div className="flex flex-col gap-3">
 				<h3 className="text-sm font-medium">Planned</h3>
 				<ul className="flex flex-col gap-4">
-					<RoadmapItem title="Basic field selection">
-						<p>
-							Build{" "}
-							<code className="font-mono text-xs">
-								fields[users]=id,name
-							</code>{" "}
-							from helpers such as{" "}
-							<code className="font-mono text-xs">addField</code>,{" "}
-							<code className="font-mono text-xs">removeField</code>
-							,{" "}
-							<code className="font-mono text-xs">setFields</code>,
-							and{" "}
-							<code className="font-mono text-xs">clearFields</code>
-							.
-						</p>
-						<CodeBlock className="mt-2">
-							<CodeBlockHeader>
-								<CodeBlockTitle>fields</CodeBlockTitle>
-								<CodeBlockActions>
-									<CodeBlockCopyButton value={FIELDS_EXAMPLES} />
-								</CodeBlockActions>
-							</CodeBlockHeader>
-							<CodeBlockContent wrap>{FIELDS_EXAMPLES}</CodeBlockContent>
-						</CodeBlock>
-					</RoadmapItem>
-
 					<RoadmapItem title="Fields for included relations">
 						Select columns on included models, e.g.{" "}
 						<code className="font-mono text-xs">
@@ -94,19 +88,22 @@ export function FieldsRoadmap() {
 						relationships.
 					</RoadmapItem>
 
-					<RoadmapItem title="Allowed fields &amp; safety">
-						Only configured field names for each table enter{" "}
-						<code className="font-mono text-xs">queryString</code>,
-						mirroring Spatie’s{" "}
-						<code className="font-mono text-xs">allowedFields</code>{" "}
-						/ disallowed select behaviour on the client.
-					</RoadmapItem>
-
 					<RoadmapItem title="Param naming &amp; delimiters">
 						Optional rename of the{" "}
 						<code className="font-mono text-xs">fields</code> param
 						and configurable multi-value delimiters (same advanced
 						options as filters / includes / sorts).
+						<CodeBlock className="mt-2">
+							<CodeBlockHeader>
+								<CodeBlockTitle>fields</CodeBlockTitle>
+								<CodeBlockActions>
+									<CodeBlockCopyButton value={FIELDS_EXAMPLES} />
+								</CodeBlockActions>
+							</CodeBlockHeader>
+							<CodeBlockContent wrap>
+								{FIELDS_EXAMPLES}
+							</CodeBlockContent>
+						</CodeBlock>
 					</RoadmapItem>
 
 					<RoadmapItem title="Enable / disable without remove">

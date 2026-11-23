@@ -4,6 +4,7 @@ export const DOC_SECTIONS = [
 	{ title: "Compatibility with nuqs", hash: "compatibility-with-nuqs" },
 	{ title: "addFilter / removeFilter", hash: "add-filter-remove-filter" },
 	{ title: "cycleSort", hash: "cycle-sort" },
+	{ title: "addField / removeField", hash: "add-field-remove-field" },
 	{ title: "Filtering — roadmap", hash: "future-filtering" },
 	{ title: "Sorting — roadmap", hash: "future-sorting" },
 	{ title: "Including relationships — roadmap", hash: "future-including" },

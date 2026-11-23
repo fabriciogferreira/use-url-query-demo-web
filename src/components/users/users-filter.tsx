@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ExternalLinkIcon } from "@/components/icons"
 import { useDocsQuery } from "@/components/docs/docs-query"
 import { Button } from "@/components/ui/button"
@@ -19,11 +19,13 @@ export function UsersFilter() {
 	const { filters, addFilter, removeFilter, queryString } = useDocsQuery()
 	const usersQuery = useListUsers({ queryString })
 	const [nameDraft, setNameDraft] = useState(filters.name ?? "")
+	const [nameFromUrl, setNameFromUrl] = useState(filters.name)
 	const hasNameFilter = filters.name !== undefined && filters.name !== null
 
-	useEffect(() => {
+	if (filters.name !== nameFromUrl) {
+		setNameFromUrl(filters.name)
 		setNameDraft(filters.name ?? "")
-	}, [filters.name])
+	}
 
 	return (
 		<section
@@ -127,16 +129,20 @@ export function UsersFilter() {
 								No users match.
 							</li>
 						) : (
-							usersQuery.data.data.map((user) => (
+							usersQuery.data.data.map((user, index) => (
 								<li
-									key={user.id}
+									key={user.id ?? user.name ?? `user-${index}`}
 									className="border-input rounded-md border px-3 py-2 text-sm"
 								>
-									<span className="font-medium">{user.name}</span>
-									<span className="text-muted-foreground">
-										{" "}
-										— {user.email}
+									<span className="font-medium">
+										{user.name ?? "(no name)"}
 									</span>
+									{user.email ? (
+										<span className="text-muted-foreground">
+											{" "}
+											— {user.email}
+										</span>
+									) : null}
 								</li>
 							))
 						)}

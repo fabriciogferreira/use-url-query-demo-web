@@ -52,9 +52,12 @@ export function createUsersSortColumns(args: CreateUsersSortColumnsArgs) {
 		}),
 		columnHelper.accessor("status", {
 			header: "Status",
-			cell: ({ getValue }) => (
-				<span className="capitalize">{getValue()}</span>
-			),
+			cell: ({ getValue }) => {
+				const status = getValue()
+				return status ? (
+					<span className="capitalize">{status}</span>
+				) : null
+			},
 		}),
 	])
 }
