@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { ChevronRightIcon } from "@/components/icons"
+import { lockDocsScrollSpy } from "@/components/docs/use-docs-scroll-spy"
+import { getSectionProgressByHash } from "@/components/roadmap/progress"
 import { SearchForm } from "@/components/search-form"
 import { VersionSwitcher } from "@/components/version-switcher"
 import {
@@ -51,6 +53,35 @@ const data = {
 				},
 			],
 		},
+		{
+			title: "Future features",
+			items: [
+				{
+					title: "Filtering",
+					hash: "future-filtering",
+				},
+				{
+					title: "Sorting",
+					hash: "future-sorting",
+				},
+				{
+					title: "Including relationships",
+					hash: "future-including",
+				},
+				{
+					title: "Selecting fields",
+					hash: "future-fields",
+				},
+				{
+					title: "Multi value delimiter",
+					hash: "future-delimiter",
+				},
+				{
+					title: "Spatie docs listing",
+					hash: "future-spatie-listing",
+				},
+			],
+		},
 	],
 }
 
@@ -64,6 +95,7 @@ function scrollToHash(hash: string) {
 		return
 	}
 
+	lockDocsScrollSpy()
 	element.scrollIntoView({ behavior: "smooth", block: "start" })
 	window.history.pushState(null, "", `#${hash}`)
 	window.dispatchEvent(new HashChangeEvent("hashchange"))
@@ -91,6 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			return
 		}
 
+		lockDocsScrollSpy()
 		requestAnimationFrame(() => {
 			document
 				.getElementById(initialHash)
@@ -157,6 +190,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 											const isActive =
 												hash === navItem.hash ||
 												(hash === "" && navItem.hash === "introduction")
+											const progress = getSectionProgressByHash(
+												navItem.hash,
+											)
 
 											return (
 												<SidebarMenuItem key={navItem.title}>
@@ -172,7 +208,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 															/>
 														}
 													>
-														{navItem.title}
+														<span className="truncate">
+															{navItem.title}
+														</span>
+														{progress ? (
+															<span className="text-muted-foreground ms-auto tabular-nums">
+																{progress.percent}%
+															</span>
+														) : null}
 													</SidebarMenuButton>
 												</SidebarMenuItem>
 											)

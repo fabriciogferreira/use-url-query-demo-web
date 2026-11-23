@@ -15,13 +15,7 @@ import {
 	SidebarProvider,
 	SidebarTrigger,
 } from "@/components/ui/sidebar"
-
-const TITLE_BY_HASH: Record<string, string> = {
-	introduction: "Introduction",
-	installation: "Installation",
-	"compatibility-with-nuqs": "Compatibility with nuqs",
-	"add-filter-remove-filter": "addFilter / removeFilter",
-}
+import { DOC_TITLE_BY_HASH } from "@/components/docs/sections"
 
 export type AppShellProps = {
 	children: ReactNode
@@ -33,7 +27,7 @@ export function AppShell(props: AppShellProps) {
 	useEffect(() => {
 		const syncTitle = () => {
 			const hash = window.location.hash.replace(/^#/, "")
-			setTitle(TITLE_BY_HASH[hash] ?? "Introduction")
+			setTitle(DOC_TITLE_BY_HASH[hash] ?? "Introduction")
 		}
 
 		syncTitle()

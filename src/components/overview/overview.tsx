@@ -58,12 +58,20 @@ export function Overview() {
 						<code className="font-mono text-xs">include</code>, and more.
 					</p>
 					<p className="text-muted-foreground text-sm leading-relaxed">
-						Call helpers like{" "}
-						<code className="font-mono text-xs">addFilter</code> /{" "}
-						<code className="font-mono text-xs">removeFilter</code>, then pass
-						the generated{" "}
+						Today the shipped surface is{" "}
+						<code className="font-mono text-xs">addFilter</code> (equal /{" "}
+						<code className="font-mono text-xs">=</code> only) and{" "}
+						<code className="font-mono text-xs">removeFilter</code>. Pass the
+						generated{" "}
 						<code className="font-mono text-xs">queryString</code> straight to
-						your API client.
+						your API client. See{" "}
+						<a
+							href="#future-filtering"
+							className="underline underline-offset-4 hover:text-foreground"
+						>
+							Future features
+						</a>{" "}
+						for what comes next.
 					</p>
 				</div>
 			</section>
