@@ -54,6 +54,15 @@ const data = {
 			],
 		},
 		{
+			title: "Sorting",
+			items: [
+				{
+					title: "cycleSort",
+					hash: "cycle-sort",
+				},
+			],
+		},
+		{
 			title: "Future features",
 			items: [
 				{

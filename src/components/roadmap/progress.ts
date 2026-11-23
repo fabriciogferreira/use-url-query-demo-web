@@ -56,16 +56,17 @@ export const roadmapSections: RoadmapSectionProgress[] = [
 		label: "Sorting",
 		hash: "future-sorting",
 		items: [
+			{ id: "cycle-sort", title: "cycleSort", done: true },
 			{
 				id: "basic-multi",
 				title: "Basic & multi-column sort",
-				done: false,
+				done: true,
 			},
 			{ id: "defaults", title: "Default sorts", done: false },
 			{
 				id: "allowed-safety",
 				title: "Allowed sorts & safety",
-				done: false,
+				done: true,
 			},
 			{ id: "aliases", title: "Aliases", done: false },
 			{ id: "custom", title: "Custom sorts", done: false },

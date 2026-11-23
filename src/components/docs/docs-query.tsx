@@ -19,6 +19,7 @@ export type DocsQueryProviderProps = {
 export function DocsQueryProvider(props: DocsQueryProviderProps) {
 	const value = useUrlQuery({
 		filters: docsFilters,
+		sorts: ["name"],
 	})
 
 	return (

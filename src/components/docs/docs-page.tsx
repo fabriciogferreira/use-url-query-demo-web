@@ -10,7 +10,7 @@ import {
 	SortingRoadmap,
 	SpatieListingRoadmap,
 } from "@/components/roadmap"
-import { UsersFilter } from "@/components/users"
+import { UsersFilter, UsersSort } from "@/components/users"
 import { DocsQueryProvider } from "./docs-query"
 import { QueryStringDock } from "./query-string-dock"
 import { useDocsScrollSpy } from "./use-docs-scroll-spy"
@@ -30,6 +30,7 @@ export function DocsPage() {
 					<main className="flex w-full flex-col gap-10 p-8">
 						<Overview />
 						<UsersFilter />
+						<UsersSort />
 						<FilteringRoadmap />
 						<SortingRoadmap />
 						<IncludingRoadmap />
