@@ -10,7 +10,12 @@ import {
 	SortingRoadmap,
 	SpatieListingRoadmap,
 } from "@/components/roadmap"
-import { UsersFields, UsersFilter, UsersSort } from "@/components/users"
+import {
+	UsersFields,
+	UsersFilter,
+	UsersInclude,
+	UsersSort,
+} from "@/components/users"
 import { DocsQueryProvider } from "./docs-query"
 import { QueryStringDock } from "./query-string-dock"
 import { useDocsScrollSpy } from "./use-docs-scroll-spy"
@@ -32,6 +37,7 @@ export function DocsPage() {
 						<UsersFilter />
 						<UsersSort />
 						<UsersFields />
+						<UsersInclude />
 						<FilteringRoadmap />
 						<SortingRoadmap />
 						<IncludingRoadmap />

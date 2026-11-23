@@ -7,6 +7,12 @@ export {
 	usersAllowedFields,
 	type UsersAllowedField,
 } from "./users-fields-features"
+export { UsersInclude } from "./users-include"
+export { UsersIncludeExample } from "./users-include-example"
+export {
+	usersAllowedIncludes,
+	type UsersAllowedInclude,
+} from "./users-include-features"
 export { UsersSort } from "./users-sort"
 export { UsersSortExample } from "./users-sort-example"
 export { UsersSortTable } from "./users-sort-table"

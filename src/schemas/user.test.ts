@@ -24,4 +24,20 @@ describe("userListDataSchema", () => {
 
 		expect(parsed.data[0]?.email).toBe("alice@example.com")
 	})
+
+	it("accepts included posts and permissions", () => {
+		const parsed = userListDataSchema.parse({
+			data: [
+				{
+					id: 1,
+					name: "Alice Johnson",
+					posts: [{ id: 10, title: "Hello" }],
+					permissions: [{ id: 2, name: "edit articles" }],
+				},
+			],
+		})
+
+		expect(parsed.data[0]?.posts?.[0]?.title).toBe("Hello")
+		expect(parsed.data[0]?.permissions?.[0]?.name).toBe("edit articles")
+	})
 })

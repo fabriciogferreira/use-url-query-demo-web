@@ -72,6 +72,15 @@ const data = {
 			],
 		},
 		{
+			title: "Includes",
+			items: [
+				{
+					title: "addInclude / removeInclude",
+					hash: "add-include-remove-include",
+				},
+			],
+		},
+		{
 			title: "Future features",
 			items: [
 				{

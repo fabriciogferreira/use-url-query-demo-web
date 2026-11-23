@@ -85,7 +85,7 @@ export const roadmapSections: RoadmapSectionProgress[] = [
 			{
 				id: "basic-multi",
 				title: "Basic & multi includes",
-				done: false,
+				done: true,
 			},
 			{ id: "nested", title: "Nested relationships", done: false },
 			{

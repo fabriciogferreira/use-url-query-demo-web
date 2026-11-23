@@ -12,16 +12,19 @@ import { SectionProgress } from "./section-progress"
 const SPATIE_INCLUDING_URL =
 	"https://spatie.be/docs/laravel-query-builder/v6/features/including-relationships"
 
+const CURRENT_SURFACE = `addInclude("posts")
+// → include=posts
+
+addInclude(["posts", "permissions"])
+// → include=posts,permissions
+
+removeInclude("posts")
+clearIncludes()`
+
 const INCLUDE_EXAMPLES = `// Planned URL shapes (Spatie)
-// GET /users?include=posts
-// GET /users?include=posts,permissions
 // GET /users?include=posts.comments
 // GET /users?include=postsCount,postsExists
 // GET /users?include=postsViewsSum
-
-addInclude("posts")
-addInclude(["posts", "permissions"])
-removeInclude("posts")
 `
 
 export function IncludingRoadmap() {
@@ -49,42 +52,46 @@ export function IncludingRoadmap() {
 					</a>{" "}
 					docs. The{" "}
 					<code className="font-mono text-xs">include</code> query
-					param loads Eloquent relations (and counts / aggregates) on
-					the API. Not part of the shipped demo surface yet — today
-					only{" "}
-					<code className="font-mono text-xs">addFilter</code> /{" "}
-					<code className="font-mono text-xs">removeFilter</code> are
-					documented as available.
+					param loads Eloquent relations on the API.
 				</p>
+			</div>
+
+			<div className="flex flex-col gap-3">
+				<h3 className="text-sm font-medium">Available today</h3>
+				<p className="text-muted-foreground text-sm leading-relaxed">
+					<code className="font-mono text-xs">addInclude</code> /{" "}
+					<code className="font-mono text-xs">removeInclude</code> /{" "}
+					<code className="font-mono text-xs">clearIncludes</code> /{" "}
+					<code className="font-mono text-xs">setIncludes</code> for{" "}
+					<code className="font-mono text-xs">posts</code> and{" "}
+					<code className="font-mono text-xs">permissions</code>,
+					matching demo-api{" "}
+					<code className="font-mono text-xs">allowedIncludes</code>.
+				</p>
+				<CodeBlock>
+					<CodeBlockHeader>
+						<CodeBlockTitle>current</CodeBlockTitle>
+						<CodeBlockActions>
+							<CodeBlockCopyButton value={CURRENT_SURFACE} />
+						</CodeBlockActions>
+					</CodeBlockHeader>
+					<CodeBlockContent wrap>{CURRENT_SURFACE}</CodeBlockContent>
+				</CodeBlock>
 			</div>
 
 			<div className="flex flex-col gap-3">
 				<h3 className="text-sm font-medium">Planned</h3>
 				<ul className="flex flex-col gap-4">
-					<RoadmapItem title="Basic & multi includes">
-						<p>
-							Compose{" "}
-							<code className="font-mono text-xs">
-								include=posts
-							</code>{" "}
-							and comma lists like{" "}
-							<code className="font-mono text-xs">
-								include=posts,permissions
-							</code>
-							. Helpers such as{" "}
-							<code className="font-mono text-xs">addInclude</code>
-							,{" "}
-							<code className="font-mono text-xs">
-								removeInclude
-							</code>
-							,{" "}
-							<code className="font-mono text-xs">
-								clearIncludes
-							</code>
-							, and{" "}
-							<code className="font-mono text-xs">setIncludes</code>
-							.
-						</p>
+					<RoadmapItem title="Nested relationships">
+						Dot notation in the URL, e.g.{" "}
+						<code className="font-mono text-xs">
+							include=posts.comments
+						</code>
+						, matching Spatie’s nested{" "}
+						<code className="font-mono text-xs">
+							allowedIncludes
+						</code>
+						.
 						<CodeBlock className="mt-2">
 							<CodeBlockHeader>
 								<CodeBlockTitle>include</CodeBlockTitle>
@@ -96,18 +103,6 @@ export function IncludingRoadmap() {
 								{INCLUDE_EXAMPLES}
 							</CodeBlockContent>
 						</CodeBlock>
-					</RoadmapItem>
-
-					<RoadmapItem title="Nested relationships">
-						Dot notation in the URL, e.g.{" "}
-						<code className="font-mono text-xs">
-							include=posts.comments
-						</code>
-						, matching Spatie’s nested{" "}
-						<code className="font-mono text-xs">
-							allowedIncludes
-						</code>
-						.
 					</RoadmapItem>
 
 					<RoadmapItem title="Count &amp; exists suffixes">
