@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, Inter } from "next/font/google"
-import { ThemeProvider } from "next-themes"
 import "./globals.css"
 import { QueryProvider } from "@/components"
+import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
+import { TooltipProvider } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
@@ -38,10 +39,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 			)}
 		>
 			<body className="flex min-h-full flex-col">
-				<ThemeProvider attribute="class">
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					enableSystem
+					disableTransitionOnChange
+				>
 					<QueryProvider>
-						{children}
-						<Toaster />
+						<TooltipProvider>
+							{children}
+							<Toaster />
+						</TooltipProvider>
 					</QueryProvider>
 				</ThemeProvider>
 			</body>
